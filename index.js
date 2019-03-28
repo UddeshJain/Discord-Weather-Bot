@@ -15,8 +15,6 @@ const exampleEmbed = (
     minTemp,
     humidity,
     wind,
-    sunrise,
-    sunset,
     icon,
     author,
     profile,
@@ -25,18 +23,13 @@ const exampleEmbed = (
 ) =>
     new Discord.RichEmbed()
         .setColor('#0099ff')
-        // .setTimestamp()
         .setAuthor(`Hello, ${author}`, profile)
-        // .addBlankField()
         .setTitle(`There is ${temp}\u00B0 C in ${cityName}, ${country}`)
         .addField(`Maximum Temperature:`, `${maxTemp}\u00B0 C`, true)
         .addField(`Minimum Temperature:`, `${minTemp}\u00B0 C`, true)
         .addField(`Humidity:`, `${humidity} %`, true)
         .addField(`Wind Speed:`, `${wind} m/s`, true)
-        .addField(`Sunrise at:`, `${sunrise} IST`, true)
-        .addField(`Sunset at:`, `${sunset} IST`, true)
         .setThumbnail(`http://openweathermap.org/img/w/${icon}.png`)
-        // .addBlankField()
         .setFooter('Made With 💖 by @Uddesh');
 
 
@@ -82,14 +75,12 @@ client.on('message', message => {
                 let minTemp = apiData.data.main.temp_min;
                 let humidity = apiData.data.main.humidity;
                 let wind = apiData.data.wind.speed;
-                let sunrise = new Date(apiData.data.sys.sunrise * 1000).toLocaleTimeString();
-                let sunset = new Date(response.data.sys.sunset * 1000).toLocaleTimeString();
                 let author = message.author.username
                 let profile = message.author.displayAvatarURL
                 let icon = apiData.data.weather[0].icon
                 let cityName = args
                 let country = apiData.data.sys.country
-                message.channel.send(exampleEmbed(currentTemp, maxTemp, minTemp, humidity, wind, sunrise, sunset, icon, author, profile, cityName, country));
+                message.channel.send(exampleEmbed(currentTemp, maxTemp, minTemp, humidity, wind, icon, author, profile, cityName, country));
             }).catch(err => {
                 message.reply(`Enter a vailid city name`)
             })
