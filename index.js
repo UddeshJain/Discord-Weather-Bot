@@ -40,13 +40,13 @@ const exampleEmbed = (
 const helpEmbed = () =>
     new Discord.RichEmbed()
         .setColor('#0099ff')
-        .addField("Use '!w (City Name)' to get weather information", "For Example '!w london'", true)
+        .addField("Use '#w (City Name)' to get weather information", "For Example '#w london'", true)
         .addBlankField()
-        .addField("Use '!ping' or '!beep'", 'Try it.', true)
+        .addField("Use '#ping' or '#beep'", 'Try it.', true)
         .addBlankField()
-        .addField("Use '!server-info' to get informatin about server", "For Example '!server-info'", true)
+        .addField("Use '#server-info' to get informatin about server", "For Example '#server-info'", true)
         .addBlankField()
-        .addField("Use '!user-info' to get informatin about your profile", "For Example '!user-info'", true)
+        .addField("Use '#user-info' to get informatin about your profile", "For Example '#user-info'", true)
         .addBlankField()
         .setFooter('Made with 💖 by @Uddesh');
 
